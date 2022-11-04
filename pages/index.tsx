@@ -1,10 +1,34 @@
-import Confetti from "react-confetti";
+import { useState, useEffect } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { useWindowSize } from "../utils/useWindowSize";
+import Confetti from "react-confetti";
+import Registry from "../components/registry";
 
-export default function Home() {
+import { getRegistry } from "../utils/notion";
+import { useWindowSize } from "../utils/useWindowSize";
+import { IRegistryItem } from "../utils/types";
+
+import styles from "../styles/Home.module.css";
+
+export default function Home({ data }: any) {
+  const [registry, setRegistry] = useState<IRegistryItem[] | undefined>(
+    undefined
+  );
   const size = useWindowSize();
+
+  useEffect(() => {
+    const processData = data.map(
+      (item: any): IRegistryItem =>
+        Object.assign(
+          {},
+          {
+            name: item.name.title[0].plain_text,
+            url: item.url.url,
+            price: item.price.number,
+          }
+        )
+    );
+    setRegistry(processData);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -23,7 +47,6 @@ export default function Home() {
             opacity={0.3}
           />
         )}
-
         <div className={styles.section}>
           <h1>edith is turning 1</h1>
           <p className={styles.description}>join us for a celebration 💛</p>
@@ -32,11 +55,12 @@ export default function Home() {
           <p>11am to 2pm</p>
           <p>where: tbd</p>
         </div>
+
         <div className={styles.section}>
           <p className={styles.description}>
-            if you would like to get her a gift, here are some suggestions!
+            if you would like to get a gift, here are some suggestions!
           </p>
-          <p>wip</p>
+          {registry && <Registry registry={registry} />}
         </div>
       </main>
 
@@ -46,3 +70,10 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const registry = await getRegistry();
+  const filtered = registry.map((item: any) => item.properties);
+
+  return { props: { data: filtered } };
+};

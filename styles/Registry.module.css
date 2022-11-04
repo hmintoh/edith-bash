@@ -1,0 +1,22 @@
+.list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.listItem {
+}
+
+.link {
+  color: var(--theme-purple-300);
+}
+
+.link:hover {
+  color: var(--theme-yellow-300);
+}
+
+.registryImage {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+}

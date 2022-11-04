@@ -12,11 +12,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #f8f3a6;
-  text-align: center;
+  background: var(--theme-yellow-100);
+  /* text-align: center; */
 }
 
 .section {
+  width: 60%;
   margin: 1rem 0;
 }
 
@@ -33,12 +34,12 @@
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
-  background: #f4e064;
+  background: var(--theme-yellow-200);
 }
 
 .description {
   margin: 2rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
-  color: #b39b18;
+  color: var(--theme-yellow-300);
 }
