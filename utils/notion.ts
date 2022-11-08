@@ -1,6 +1,8 @@
 import { Client } from "@notionhq/client";
 
-const notion: any = new Client({ auth: process.env.NOTION_ACCESS_TOKEN });
+export const notion: any = new Client({
+  auth: process.env.NOTION_ACCESS_TOKEN,
+});
 
 export const getRegistry = async () => {
   const databaseId = process.env.NOTION_DATABASE_ID;

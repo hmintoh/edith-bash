@@ -21,9 +21,10 @@ export default function Home({ data }: any) {
         Object.assign(
           {},
           {
-            name: item.name.title[0].plain_text,
-            url: item.url.url,
-            price: item.price.number,
+            id: item.id,
+            name: item.properties.name.title[0].plain_text,
+            url: item.properties.url.url,
+            price: item.properties.price.number,
           }
         )
     );
@@ -71,9 +72,9 @@ export default function Home({ data }: any) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const registry = await getRegistry();
-  const filtered = registry.map((item: any) => item.properties);
+  const filtered = registry.map((item: any) => item);
 
-  return { props: { data: filtered } };
+  return { props: { data: filtered }, revalidate: 1 };
 };

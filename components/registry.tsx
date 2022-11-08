@@ -1,8 +1,24 @@
 import React from "react";
+
 import { IRegistryItem } from "../utils/types";
 import styles from "../styles/Registry.module.css";
 
-const Registry = ({ registry }: IRegistryItem[]) => {
+import axios from "axios";
+
+interface RegistryProps {
+  registry: IRegistryItem[];
+}
+
+const Registry = ({ registry }: RegistryProps) => {
+  const handleUpdate = async (id: string) => {
+    const { data } = await axios.post("/api/update-registry", {
+      id: id,
+      isChoped: true,
+    });
+
+    console.log(data);
+  };
+
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
@@ -12,6 +28,9 @@ const Registry = ({ registry }: IRegistryItem[]) => {
               {item.name}
             </a>
             , ${item.price}
+            <button onClick={() => handleUpdate(item.id)} value={item.id}>
+              chope
+            </button>
           </li>
         ))}
       </ul>
