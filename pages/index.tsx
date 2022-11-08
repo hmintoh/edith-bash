@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Confetti from "react-confetti";
-import Registry from "../components/registry";
-
 import { getRegistry } from "../utils/notion";
 import { useWindowSize } from "../utils/useWindowSize";
 import { IRegistryItem } from "../utils/types";
 
+import Registry from "../components/registry";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ data }: any) {
@@ -25,6 +24,7 @@ export default function Home({ data }: any) {
             name: item.properties.name.title[0].plain_text,
             url: item.properties.url.url,
             price: item.properties.price.number,
+            choped: item.properties.choped.checkbox,
           }
         )
     );
@@ -74,7 +74,6 @@ export default function Home({ data }: any) {
 
 export const getStaticProps = async () => {
   const registry = await getRegistry();
-  const filtered = registry.map((item: any) => item);
 
-  return { props: { data: filtered }, revalidate: 1 };
+  return { props: { data: registry }, revalidate: 1 };
 };

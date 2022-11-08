@@ -15,8 +15,6 @@ const Registry = ({ registry }: RegistryProps) => {
       id: id,
       isChoped: true,
     });
-
-    console.log(data);
   };
 
   return (
@@ -24,10 +22,11 @@ const Registry = ({ registry }: RegistryProps) => {
       <ul className={styles.list}>
         {registry.map((item: IRegistryItem, key: number) => (
           <li key={key} className={styles.listItem}>
+            {console.log(item)}
             <a className={styles.link} href={item.url} target="_blank">
               {item.name}
             </a>
-            , ${item.price}
+            , ${item.price}, {item.choped ? "choped" : "still available"}
             <button onClick={() => handleUpdate(item.id)} value={item.id}>
               chope
             </button>
