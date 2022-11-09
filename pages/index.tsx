@@ -5,7 +5,7 @@ import { getRegistry } from "../utils/notion";
 import { useWindowSize } from "../utils/useWindowSize";
 import { IRegistryItem } from "../utils/types";
 
-import Registry from "../components/registry";
+import { Registry } from "../components/registry";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ data }: any) {

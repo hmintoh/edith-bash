@@ -1,9 +1,8 @@
 import React from "react";
+import axios from "axios";
 
 import { IRegistryItem } from "../utils/types";
 import styles from "../styles/Registry.module.css";
-
-import axios from "axios";
 
 interface RegistryProps {
   registry: IRegistryItem[];
@@ -17,24 +16,48 @@ const Registry = ({ registry }: RegistryProps) => {
     });
   };
 
+  const ListCard = ({ item }: any) => {
+    return (
+      <div className={styles.card}>
+        <a href={item.url} target="_blank">
+          <strong>{item.name}</strong>
+        </a>
+        <p>${item.price}</p>
+
+        {!item.choped && (
+          <button onClick={() => handleUpdate(item.id)} value={item.id}>
+            reserve
+          </button>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <div className={styles.container}>
+    <div>
       <ul className={styles.list}>
-        {registry.map((item: IRegistryItem, key: number) => (
-          <li key={key} className={styles.listItem}>
-            {console.log(item)}
-            <a className={styles.link} href={item.url} target="_blank">
-              {item.name}
-            </a>
-            , ${item.price}, {item.choped ? "choped" : "still available"}
-            <button onClick={() => handleUpdate(item.id)} value={item.id}>
-              chope
-            </button>
-          </li>
-        ))}
+        {registry
+          .filter((item) => !item.choped)
+          .map((item: IRegistryItem, key: number) => (
+            <li key={key}>
+              <ListCard item={item} />
+            </li>
+          ))}
+      </ul>
+
+      <p>reserved items</p>
+
+      <ul className={styles.list}>
+        {registry
+          .filter((item: IRegistryItem) => item.choped)
+          .map((item: IRegistryItem, key: number) => (
+            <li key={key}>
+              <ListCard item={item} />
+            </li>
+          ))}
       </ul>
     </div>
   );
 };
 
-export default Registry;
+export { Registry };

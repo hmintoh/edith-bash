@@ -1,22 +1,28 @@
 .list {
   padding-left: 0;
   list-style: none;
+  display: flex;
+  flex-direction: row;
 }
 
-.listItem {
+.card {
+  background-color: var(--theme-yellow-200);
+  border: 1px solid var(--theme-yellow-300);
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 10px;
+  width: 160px;
 }
 
-.link {
-  color: var(--theme-purple-300);
+.card button {
+  background-color: var(--theme-yellow-100);
+  border: 1px solid var(--theme-yellow-300);
+  padding: 0.4rem;
+  border-radius: 4px;
 }
 
-.link:hover {
-  color: var(--theme-yellow-300);
-}
-
-.registryImage {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 200px;
-  height: 200px;
+.card button:hover {
+  background-color: var(--theme-yellow-300);
+  color: white;
+  cursor: pointer;
 }
