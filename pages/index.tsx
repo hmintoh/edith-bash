@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
 import Head from "next/head";
-import Confetti from "react-confetti";
-import { getRegistry } from "../utils/notion";
 import { useWindowSize } from "../utils/useWindowSize";
 import { IRegistryItem } from "../utils/types";
+import { fetcher } from "../utils/fetcher";
+import useSWR from "swr";
 
+import Confetti from "react-confetti";
 import { Registry } from "../components/registry";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ data }: any) {
-  const [registry, setRegistry] = useState<IRegistryItem[] | undefined>(
-    undefined
-  );
+export default function Home() {
   const size = useWindowSize();
+  const { data } = useSWR("/api/get-registry", fetcher);
 
-  useEffect(() => {
-    const processData = data.map(
+  const processData = (data: any): IRegistryItem[] => {
+    return data.map(
       (item: any): IRegistryItem =>
         Object.assign(
           {},
@@ -28,10 +26,11 @@ export default function Home({ data }: any) {
           }
         )
     );
-    setRegistry(processData);
-  }, []);
+  };
 
-  return (
+  return !data ? (
+    <h1>Loading</h1>
+  ) : (
     <div className={styles.container}>
       <Head>
         <title>edith</title>
@@ -48,6 +47,7 @@ export default function Home({ data }: any) {
             opacity={0.3}
           />
         )}
+
         <div className={styles.section}>
           <h1>edith is turning 1</h1>
           <p className={styles.description}>join us for a celebration 💛</p>
@@ -61,7 +61,8 @@ export default function Home({ data }: any) {
           <p className={styles.description}>
             if you would like to get a gift, here are some suggestions!
           </p>
-          {registry && <Registry registry={registry} />}
+
+          <Registry registry={processData(data.data)} />
         </div>
       </main>
 
@@ -71,9 +72,3 @@ export default function Home({ data }: any) {
     </div>
   );
 }
-
-export const getStaticProps = async () => {
-  const registry = await getRegistry();
-
-  return { props: { data: registry }, revalidate: 1 };
-};
