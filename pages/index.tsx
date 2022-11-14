@@ -1,15 +1,13 @@
 import Head from "next/head";
-import { useWindowSize } from "../utils/useWindowSize";
 import { IRegistryItem } from "../utils/types";
 import { fetcher } from "../utils/fetcher";
 import useSWR from "swr";
 
-import Confetti from "react-confetti";
+import Sparkle from "react-sparkle";
 import { Registry } from "../components/registry";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const size = useWindowSize();
   const { data } = useSWR("/api/get-registry", fetcher);
 
   const processData = (data: any): IRegistryItem[] => {
@@ -28,9 +26,7 @@ export default function Home() {
     );
   };
 
-  return !data ? (
-    <h1>Loading</h1>
-  ) : (
+  return (
     <div className={styles.container}>
       <Head>
         <title>edith</title>
@@ -39,31 +35,39 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {size.width && (
-          <Confetti
-            width={size.width}
-            height={size.height}
-            numberOfPieces={80}
-            opacity={0.3}
-          />
+        <Sparkle
+          color={"#866eb3"}
+          flickerSpeed={"slowest"}
+          fadeOutSpeed={30}
+          minSize={7}
+          maxSize={12}
+        />
+
+        {!data ? (
+          <h2>Loading...</h2>
+        ) : (
+          <>
+            <div className={styles.section}>
+              <h1>edith is turning 1!</h1>
+              <h2>join us for a celebration 💛</h2>
+              <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
+
+              <p>sat, 10 dec 2022</p>
+              <p>11am to 2pm</p>
+              <p>5 wajek walk, s588087</p>
+              <br />
+              <p>please rsvp with tim or min by sat, 3 dec 2022</p>
+            </div>
+
+            <div className={styles.section}>
+              <h2>
+                if you would like to get a gift, here are some suggestions -
+              </h2>
+
+              <Registry registry={processData(data.data)} />
+            </div>
+          </>
         )}
-
-        <div className={styles.section}>
-          <h1>edith is turning 1</h1>
-          <p className={styles.description}>join us for a celebration 💛</p>
-          <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
-          <p>sat, 10 dec 2022</p>
-          <p>11am to 2pm</p>
-          <p>where: tbd</p>
-        </div>
-
-        <div className={styles.section}>
-          <p className={styles.description}>
-            if you would like to get a gift, here are some suggestions!
-          </p>
-
-          <Registry registry={processData(data.data)} />
-        </div>
       </main>
 
       <footer className={styles.footer}>

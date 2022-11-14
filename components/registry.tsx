@@ -20,13 +20,13 @@ const Registry = ({ registry }: RegistryProps) => {
     return (
       <div className={styles.card}>
         <a href={item.url} target="_blank">
-          <strong>{item.name}</strong>
+          {item.name}
         </a>
         <p>${item.price}</p>
 
         {!item.choped && (
           <button onClick={() => handleUpdate(item.id)} value={item.id}>
-            reserve
+            i'll get it!
           </button>
         )}
       </div>
@@ -45,7 +45,7 @@ const Registry = ({ registry }: RegistryProps) => {
           ))}
       </ul>
 
-      <p>reserved items</p>
+      <h3>choped(?) items</h3>
 
       <ul className={styles.list}>
         {registry

@@ -1,18 +1,35 @@
 :root {
   --theme-purple-300: #6e5399;
   --theme-purple-200: #866eb3;
-  --theme-purple-100: #b19cd8;
+  --theme-purple-100: #bea8e8;
   --theme-yellow-100: #f8f3a6;
   --theme-yellow-200: #f4e064;
   --theme-yellow-300: #b39b18;
+
+  --shadow-100: -2px 2px;
+  --shadow-200: -4px 4px;
+}
+
+@font-face {
+  font-family: "KidosMarker";
+  src: url("../asset/kidos-marker/kidos_marker.otf");
+  src: url("../asset/kidos-marker/kidos_marker.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sono";
+  src: url("../asset/sono/Sono-Medium.ttf");
+  font-weight: 500;
+  font-style: normal;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Sono, sans-serif;
 }
 
 a {
@@ -27,17 +44,44 @@ a {
 h1,
 h2,
 h3 {
-  margin: 0;
-  line-height: 1.15;
-  color: #6e5399;
+  line-height: 1.4;
+  font-family: KidosMarker, sans-serif;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 5rem;
+  margin: 0;
+  color: var(--theme-purple-300);
+  text-shadow: var(--shadow-200) var(--theme-purple-100);
+  /* background: linear-gradient(
+    to right,
+    #ef5350,
+    #f48fb1,
+    #7e57c2,
+    #2196f3,
+    #26c6da,
+    #43a047,
+    #eeff41,
+    #f9a825,
+    #ff5722
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 h2 {
+  font-size: 3rem;
+  color: var(--theme-yellow-300);
+  margin: 2rem 0;
+  text-shadow: var(--shadow-100) var(--theme-yellow-200);
+}
+
+h3 {
   font-size: 2rem;
+  color: var(--theme-yellow-300);
+  margin: 2rem 0;
+  text-shadow: var(--shadow-100) var(--theme-yellow-200);
 }
 
 @media (prefers-color-scheme: dark) {
