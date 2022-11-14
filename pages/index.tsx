@@ -21,6 +21,7 @@ export default function Home() {
             url: item.properties.url.url,
             price: item.properties.price.number,
             choped: item.properties.choped.checkbox,
+            imgSrc: item.properties.image.files[0]?.file.url,
           }
         )
     );

@@ -4,4 +4,5 @@ export interface IRegistryItem {
   url: string;
   price: number;
   choped: boolean;
+  imgSrc: string;
 }

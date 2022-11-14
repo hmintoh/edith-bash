@@ -19,6 +19,7 @@ const Registry = ({ registry }: RegistryProps) => {
   const ListCard = ({ item }: any) => {
     return (
       <div className={styles.card}>
+        <img src={item.imgSrc} alt={item.name} />
         <a href={item.url} target="_blank">
           {item.name}
         </a>
