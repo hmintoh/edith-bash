@@ -22,11 +22,22 @@
 .card img {
   border-radius: 50%;
   object-fit: cover;
+  width: inherit;
+  display: block;
+}
+
+.card a {
+  display: block;
+  width: 100%;
+}
+
+.card img {
+  border: 2px solid var(--theme-yellow-300);
   margin-bottom: 8px;
 }
 
-.card a:hover {
-  color: var(--theme-purple-300);
+.card img:hover {
+  border: 2px solid var(--theme-purple-300);
 }
 
 .card button {

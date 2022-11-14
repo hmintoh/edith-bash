@@ -19,10 +19,10 @@ const Registry = ({ registry }: RegistryProps) => {
   const ListCard = ({ item }: any) => {
     return (
       <div className={styles.card}>
-        <img src={item.imgSrc} alt={item.name} />
         <a href={item.url} target="_blank">
-          {item.name}
+          <img src={item.imgSrc} alt={item.name} />
         </a>
+        <strong>{item.name}</strong>
         <p>${item.price}</p>
 
         {!item.choped && (
