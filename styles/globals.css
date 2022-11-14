@@ -50,7 +50,7 @@ h3 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   margin: 0;
   color: var(--theme-purple-300);
   text-shadow: var(--shadow-200) var(--theme-purple-100);
@@ -71,7 +71,7 @@ h1 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--theme-yellow-300);
   margin: 2rem 0;
   text-shadow: var(--shadow-100) var(--theme-yellow-200);
@@ -84,12 +84,21 @@ h3 {
   text-shadow: var(--shadow-100) var(--theme-yellow-200);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
     background: black;
+  }
+} */
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 3rem;
   }
 }

@@ -11,7 +11,7 @@
   border: 1px solid var(--theme-yellow-300);
   box-shadow: var(--shadow-200) var(--theme-yellow-300);
   padding: 1rem;
-  width: 160px;
+  width: 150px;
   border-radius: 10px;
   height: 100%;
   display: flex;
@@ -48,6 +48,7 @@
   box-shadow: var(--shadow-100) var(--theme-yellow-300);
   transition: all 0.3s ease 0s;
   font-family: inherit;
+  font-size: inherit;
 }
 
 .card button:hover {
