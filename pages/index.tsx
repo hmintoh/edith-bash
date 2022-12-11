@@ -30,14 +30,14 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>edith</title>
-        <meta name="description" content="edith's birthday bash" />
+        <title>edith + jesus</title>
+        <meta name="description" content="for jesus and edith" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <Sparkle
-          color={"#866eb3"}
+          color={"#e7ddd2"}
           flickerSpeed={"slowest"}
           fadeOutSpeed={30}
           minSize={7}
@@ -49,21 +49,21 @@ export default function Home() {
         ) : (
           <>
             <div className={styles.section}>
-              <h1>edith is turning 1!</h1>
-              <h2>join us for a celebration 💛</h2>
+              <h1>ho ho ho</h1>
+              <h2>join us to celebrate edith (again) and jesus 🤍🎄</h2>
               <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
-
-              <p>sat, 10 dec 2022</p>
+              <img src={"/jesus.jpeg"} alt="jesus" className={styles.image} />
+              <p>sat, 24 dec 2022</p>
               <p>11am to 2pm</p>
-              <p>5 wajek walk, s588087</p>
+              <p>#10-11 cafe (our house)</p>
               <br />
-              <p>please rsvp with tim or min by sat, 3 dec 2022</p>
             </div>
 
             <div className={styles.section}>
-              <h2>
-                if you would like to get a gift, here are some suggestions -
-              </h2>
+              <h3>
+                if you would like to get edith a gift, here are some suggestions
+                -
+              </h3>
 
               <Registry registry={processData(data.data)} />
             </div>

@@ -1,10 +1,9 @@
 :root {
-  --theme-purple-300: #6e5399;
-  --theme-purple-200: #866eb3;
-  --theme-purple-100: #bea8e8;
-  --theme-yellow-100: #f8f3a6;
-  --theme-yellow-200: #f4e064;
-  --theme-yellow-300: #b39b18;
+  --theme-accent-red: #cb401b;
+  --theme-accent-green: #30360f;
+  --theme-yellow-100: #e7ddd2;
+  --theme-yellow-200: #e3caaf;
+  --theme-yellow-300: #934f28;
 
   --shadow-100: -2px 2px;
   --shadow-200: -4px 4px;
@@ -30,6 +29,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Sono, sans-serif;
+  color: var(--theme-yellow-100);
 }
 
 a {
@@ -52,8 +52,8 @@ h3 {
 h1 {
   font-size: 4rem;
   margin: 0;
-  color: var(--theme-purple-300);
-  text-shadow: var(--shadow-200) var(--theme-purple-100);
+  color: var(--theme-accent-red);
+  text-shadow: var(--shadow-200) var(--theme-yellow-200);
   /* background: linear-gradient(
     to right,
     #ef5350,
@@ -70,29 +70,13 @@ h1 {
   -webkit-text-fill-color: transparent; */
 }
 
-h2 {
-  font-size: 2rem;
-  color: var(--theme-yellow-300);
-  margin: 2rem 0;
-  text-shadow: var(--shadow-100) var(--theme-yellow-200);
-}
-
+h2,
 h3 {
   font-size: 2rem;
-  color: var(--theme-yellow-300);
+  color: var(--theme-yellow-200);
   margin: 2rem 0;
-  text-shadow: var(--shadow-100) var(--theme-yellow-200);
+  text-shadow: var(--shadow-100) var(--theme-yellow-300);
 }
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
 
 @media (min-width: 768px) {
   h1 {

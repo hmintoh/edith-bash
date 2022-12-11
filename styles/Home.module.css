@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--theme-yellow-100);
+  background: var(--theme-accent-green);
 }
 
 .footer {
@@ -22,7 +22,7 @@
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
-  background: var(--theme-yellow-200);
+  background: var(--theme-accent-green);
 }
 
 .section {
@@ -32,13 +32,19 @@
 .image {
   border-radius: 50%;
   object-fit: cover;
-  width: 200px;
-  height: 200px;
-  border: 3px solid var(--theme-yellow-300);
+  width: 140px;
+  height: 140px;
+  border: 3px solid var(--theme-accent-red);
+  margin-right: 8px;
 }
 
 @media (min-width: 768px) {
   .section {
     width: 60%;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
   }
 }
