@@ -46,7 +46,7 @@ const Registry = ({ registry }: RegistryProps) => {
           ))}
       </ul>
 
-      <h3>chope-d(?) items</h3>
+      <h3>reserved items</h3>
 
       <ul className={styles.list}>
         {registry
