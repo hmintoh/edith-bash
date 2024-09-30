@@ -1,16 +1,32 @@
 import React from "react";
 import axios from "axios";
+import useSWR from "swr";
 
+import { fetcher } from "../utils/fetcher";
 import { IRegistryItem } from "../utils/types";
 import styles from "../styles/Registry.module.css";
 
-interface RegistryProps {
-  registry: IRegistryItem[];
-}
+const Registry = () => {
+  const { data } = useSWR("/api/get-registry", fetcher);
 
-const Registry = ({ registry }: RegistryProps) => {
+  const processedData =
+    data &&
+    data.data.map((item: any) =>
+      Object.assign(
+        {},
+        {
+          id: item.id,
+          name: item.properties.name.title[0].plain_text,
+          url: item.properties.url.url,
+          price: item.properties.price.number,
+          choped: item.properties.choped.checkbox,
+          imgSrc: item.properties.image.files[0]?.file.url,
+        }
+      )
+    );
+
   const handleUpdate = async (id: string) => {
-    const { data } = await axios.post("/api/update-registry", {
+    await axios.post("/api/update-registry", {
       id: id,
       isChoped: true,
     });
@@ -34,11 +50,17 @@ const Registry = ({ registry }: RegistryProps) => {
     );
   };
 
-  return (
+  return !processedData ? (
     <div>
+      <h3>loading...</h3>
+    </div>
+  ) : (
+    <div>
+      <h3>if you would like to get a gift, here are some suggestions -</h3>
+
       <ul className={styles.list}>
-        {registry
-          .filter((item) => !item.choped)
+        {processedData
+          .filter((item: IRegistryItem) => !item.choped)
           .map((item: IRegistryItem, key: number) => (
             <li key={key}>
               <ListCard item={item} />
@@ -49,7 +71,7 @@ const Registry = ({ registry }: RegistryProps) => {
       <h3>reserved items</h3>
 
       <ul className={styles.list}>
-        {registry
+        {processedData
           .filter((item: IRegistryItem) => item.choped)
           .map((item: IRegistryItem, key: number) => (
             <li key={key}>
