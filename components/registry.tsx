@@ -9,6 +9,8 @@ import styles from "../styles/Registry.module.css";
 const Registry = () => {
   const { data, mutate } = useSWR("/api/get-registry", fetcher);
 
+  console.log(data);
+
   const processedData =
     data &&
     data.data.map((item: any) =>
@@ -17,8 +19,9 @@ const Registry = () => {
         {
           id: item.id,
           name: item.properties.name.title[0].plain_text,
-          url: item.properties.url.url,
           price: item.properties.price.number,
+          url: item.properties.url.url,
+          reason: item.properties.reason.rich_text[0].plain_text,
           choped: item.properties.choped.checkbox,
           imgSrc: item.properties.image.files[0]?.file.url,
         }
@@ -40,6 +43,7 @@ const Registry = () => {
           <img src={item.imgSrc} alt={item.name} />
         </a>
         <p>{item.name}</p>
+        <p>{item.reason}</p>
         <p>${item.price}</p>
 
         {!item.choped && (
@@ -54,7 +58,7 @@ const Registry = () => {
   return (
     processedData && (
       <div>
-        <h3>stuff i promise i totally need</h3>
+        <h3>stuff i want that i totally need</h3>
 
         <ul className={styles.list}>
           {processedData
