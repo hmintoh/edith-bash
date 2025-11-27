@@ -1,9 +1,9 @@
 :root {
-  --theme-accent-red: #505168;
-  --theme-accent-green: #27233a;
+  --theme-accent-red: #e94747;
+  --theme-accent-green: #277244;
   --theme-yellow-100: #eaefd3;
   --theme-yellow-200: #dcc48e;
-  --theme-yellow-300: #b3c0a4;
+  --theme-yellow-300: #bba36a;
 
   --shadow-100: -2px 2px;
   --shadow-200: -4px 4px;
@@ -53,7 +53,7 @@ h1 {
   margin: 0;
   color: var(--theme-accent-red);
   text-shadow: var(--shadow-200) var(--theme-yellow-200);
-  /* background: linear-gradient(
+  background: linear-gradient(
     to right,
     #ef5350,
     #f48fb1,
@@ -66,7 +66,7 @@ h1 {
     #ff5722
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  -webkit-text-fill-color: transparent;
 }
 
 h2,
@@ -74,7 +74,6 @@ h3 {
   font-size: 2rem;
   color: var(--theme-yellow-200);
   margin: 2rem 0;
-  /* text-shadow: var(--shadow-100) var(--theme-yellow-300); */
 }
 
 @media (min-width: 768px) {

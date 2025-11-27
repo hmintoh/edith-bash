@@ -1,14 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { notion } from "../../utils/notion";
 
-export const getRegistry = async () => {};
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const databaseId = process.env.NOTION_DATABASE_ID;
+  const dataSourceId = process.env.NOTION_DATASOURCE_ID;
 
   try {
-    const response = await notion.databases.query({ database_id: databaseId });
+    const response = await notion.dataSources.query({
+      data_source_id: dataSourceId,
+    });
     const data = response.results;
+
     res.status(200).json({ data });
   } catch (error) {
     res.status(500).json({ error });

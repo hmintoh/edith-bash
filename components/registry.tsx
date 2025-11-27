@@ -9,6 +9,8 @@ import styles from "../styles/Registry.module.css";
 const Registry = () => {
   const { data } = useSWR("/api/get-registry", fetcher);
 
+  console.log(data);
+
   const processedData =
     data &&
     data.data.map((item: any) =>
@@ -52,11 +54,11 @@ const Registry = () => {
 
   return !processedData ? (
     <div>
-      <h3>loading...</h3>
+      <h3>zzz...</h3>
     </div>
   ) : (
     <div>
-      <h3>if you would like to get a gift, here are some suggestions -</h3>
+      <h3>if you would like to get a gift...</h3>
 
       <ul className={styles.list}>
         {processedData

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>boo, i'm 3!</title>
+        <title>boo!</title>
         <meta name="description" content="for edith" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -23,10 +23,8 @@ export default function Home() {
         />
 
         <div className={styles.section}>
-          <h1>boo, i'm three!</h1>
-          <h2>it's my birthday and you are invited 🤍</h2>
+          <h1>wow! im {new Date().getFullYear() - 2021}</h1>
           <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
-          <p>tbc</p>
           <br />
         </div>
 
