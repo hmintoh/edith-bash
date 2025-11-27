@@ -1,15 +1,13 @@
 import React from "react";
 import axios from "axios";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 
 import { fetcher } from "../utils/fetcher";
 import { IRegistryItem } from "../utils/types";
 import styles from "../styles/Registry.module.css";
 
 const Registry = () => {
-  const { data } = useSWR("/api/get-registry", fetcher);
-
-  console.log(data);
+  const { data, mutate } = useSWR("/api/get-registry", fetcher);
 
   const processedData =
     data &&
@@ -32,6 +30,7 @@ const Registry = () => {
       id: id,
       isChoped: true,
     });
+    mutate();
   };
 
   const ListCard = ({ item }: any) => {
@@ -40,7 +39,7 @@ const Registry = () => {
         <a href={item.url} target="_blank">
           <img src={item.imgSrc} alt={item.name} />
         </a>
-        <strong>{item.name}</strong>
+        <p>{item.name}</p>
         <p>${item.price}</p>
 
         {!item.choped && (
@@ -52,36 +51,34 @@ const Registry = () => {
     );
   };
 
-  return !processedData ? (
-    <div>
-      <h3>zzz...</h3>
-    </div>
-  ) : (
-    <div>
-      <h3>if you would like to get a gift...</h3>
+  return (
+    processedData && (
+      <div>
+        <h3>stuff i promise i totally need</h3>
 
-      <ul className={styles.list}>
-        {processedData
-          .filter((item: IRegistryItem) => !item.choped)
-          .map((item: IRegistryItem, key: number) => (
-            <li key={key}>
-              <ListCard item={item} />
-            </li>
-          ))}
-      </ul>
+        <ul className={styles.list}>
+          {processedData
+            .filter((item: IRegistryItem) => !item.choped)
+            .map((item: IRegistryItem, key: number) => (
+              <li key={key}>
+                <ListCard item={item} />
+              </li>
+            ))}
+        </ul>
 
-      <h3>reserved items</h3>
+        <h3>bagged and tagged</h3>
 
-      <ul className={styles.list}>
-        {processedData
-          .filter((item: IRegistryItem) => item.choped)
-          .map((item: IRegistryItem, key: number) => (
-            <li key={key}>
-              <ListCard item={item} />
-            </li>
-          ))}
-      </ul>
-    </div>
+        <ul className={styles.list}>
+          {processedData
+            .filter((item: IRegistryItem) => item.choped)
+            .map((item: IRegistryItem, key: number) => (
+              <li key={key}>
+                <ListCard item={item} />
+              </li>
+            ))}
+        </ul>
+      </div>
+    )
   );
 };
 

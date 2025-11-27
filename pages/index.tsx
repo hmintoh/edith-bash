@@ -23,7 +23,8 @@ export default function Home() {
         />
 
         <div className={styles.section}>
-          <h1>wow! im {new Date().getFullYear() - 2021}</h1>
+          <h1>boo! im {new Date().getFullYear() - 2021}</h1>
+          <br />
           <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
           <br />
         </div>
