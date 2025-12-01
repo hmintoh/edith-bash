@@ -6,3 +6,7 @@ export interface IRegistryItem {
   choped: boolean;
   imgSrc: string;
 }
+
+export interface IDetailItem {
+  detail: string;
+}

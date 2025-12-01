@@ -41,8 +41,8 @@ const Registry = () => {
         <a href={item.url} target="_blank">
           <p> {item.name}</p>
         </a>
-        <p>${item.price}</p>
         <p>{item.reason}</p>
+        <p>${item.price}</p>
 
         {!item.choped && (
           <button onClick={() => handleUpdate(item.id)} value={item.id}>
@@ -58,7 +58,7 @@ const Registry = () => {
       <div>
         <h2>
           totally optional, but if you're feeling generous, here is a list of
-          <i>stuff i want that i totally need</i>
+          <i>stuff i want that i definitely need</i>
         </h2>
 
         <ul className={styles.list}>
