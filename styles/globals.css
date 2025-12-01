@@ -48,6 +48,10 @@ h2 {
   letter-spacing: 1px;
 }
 
+p {
+  margin-bottom: 1rem;
+}
+
 h1 {
   font-size: 4rem;
   margin: 0;
@@ -71,9 +75,10 @@ h1 {
 
 h2,
 h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--theme-yellow-200);
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 @media (min-width: 768px) {

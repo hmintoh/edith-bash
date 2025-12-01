@@ -9,8 +9,6 @@ import styles from "../styles/Registry.module.css";
 const Registry = () => {
   const { data, mutate } = useSWR("/api/get-registry", fetcher);
 
-  console.log(data);
-
   const processedData =
     data &&
     data.data.map((item: any) =>
@@ -39,10 +37,10 @@ const Registry = () => {
   const ListCard = ({ item }: any) => {
     return (
       <div className={styles.card}>
+        <img src={item.imgSrc} alt={item.name} />
         <a href={item.url} target="_blank">
-          <img src={item.imgSrc} alt={item.name} />
+          {item.name}
         </a>
-        <p>{item.name}</p>
         <p>{item.reason}</p>
         <p>${item.price}</p>
 
@@ -58,7 +56,10 @@ const Registry = () => {
   return (
     processedData && (
       <div>
-        <h3>stuff i want that i totally need</h3>
+        <h3>
+          totally optional, but if you're feeling generous, here is a list of
+          <i>stuff i want that i totally need</i>
+        </h3>
 
         <ul className={styles.list}>
           {processedData

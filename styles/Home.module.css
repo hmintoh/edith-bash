@@ -7,7 +7,7 @@
 
 .main {
   display: flex;
-  padding: 4rem 2rem;
+  padding: 4rem 1.8rem;
   flex: 1;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@
   padding: 1rem 0;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   background: var(--theme-accent-red);
 }
 
@@ -32,8 +32,8 @@
 .image {
   border-radius: 50%;
   object-fit: cover;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   border: 3px solid var(--theme-accent-green);
   margin-right: 8px;
 }

@@ -27,6 +27,11 @@ export default function Home() {
           <br />
           <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
           <br />
+          <p>13 Dec 2025, 2-5.30pm @ springdale function room</p>
+          <p>
+            there will be snacks, there will be chaos. please RSVP and don't
+            forget your swimwear!
+          </p>
         </div>
 
         <div className={styles.section}>
@@ -35,7 +40,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        © {new Date().getFullYear()} by hmintoh. made with ♡ in singapore.
+        © {new Date().getFullYear()} by hmintoh, made with ♡ in sg.
       </footer>
     </div>
   );
