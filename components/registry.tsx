@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 
 import { fetcher } from "../utils/fetcher";
 import { IRegistryItem } from "../utils/types";
@@ -39,10 +39,10 @@ const Registry = () => {
       <div className={styles.card}>
         <img src={item.imgSrc} alt={item.name} />
         <a href={item.url} target="_blank">
-          {item.name}
+          <p> {item.name}</p>
         </a>
-        <p>{item.reason}</p>
         <p>${item.price}</p>
+        <p>{item.reason}</p>
 
         {!item.choped && (
           <button onClick={() => handleUpdate(item.id)} value={item.id}>
@@ -56,10 +56,10 @@ const Registry = () => {
   return (
     processedData && (
       <div>
-        <h3>
+        <h2>
           totally optional, but if you're feeling generous, here is a list of
           <i>stuff i want that i totally need</i>
-        </h3>
+        </h2>
 
         <ul className={styles.list}>
           {processedData
@@ -71,7 +71,7 @@ const Registry = () => {
             ))}
         </ul>
 
-        <h3>bagged and tagged</h3>
+        <h2>bagged and tagged</h2>
 
         <ul className={styles.list}>
           {processedData
