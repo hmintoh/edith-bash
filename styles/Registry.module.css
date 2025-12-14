@@ -66,6 +66,10 @@
   }
 }
 
+.empty {
+  margin-bottom: 4rem;
+}
+
 @media (min-width: 768px) {
   .list {
     grid-template-columns: auto auto auto;
