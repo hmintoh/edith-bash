@@ -3,25 +3,26 @@ import useSWR from "swr";
 
 import Sparkle from "react-sparkle";
 import { fetcher } from "../utils/fetcher";
-import { IDetailItem } from "../utils/types";
 import { Registry } from "../components/registry";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const { data } = useSWR("/api/get-details", fetcher);
+  let coverPhoto: string = "";
+  const details: string[] = [];
 
   const processedData =
     data &&
-    data.data.results
-      .filter((item: any) => item.type === "quote")
-      .map((item: any) =>
-        Object.assign(
-          {},
-          {
-            detail: item.quote.rich_text[0].text.content,
-          }
-        )
-      );
+    data.data.results.map((item: any) => {
+      switch (item.type) {
+        case "image":
+          coverPhoto = item.image.file.url;
+          break;
+        case "quote":
+          details.push(item.quote.rich_text[0].text.content);
+          break;
+      }
+    });
 
   return (
     processedData && (
@@ -44,10 +45,10 @@ export default function Home() {
           <div className={styles.section}>
             <h1>boo! im {new Date().getFullYear() - 2021}</h1>
             <br />
-            <img src={"/selfie.jpg"} alt="selfie" className={styles.image} />
+            <img src={coverPhoto} alt="selfie" className={styles.image} />
             <br />
-            {processedData.map((item: IDetailItem, key: number) => (
-              <p key={key}>{item.detail}</p>
+            {details.map((item: string, key: number) => (
+              <p key={key}>{item}</p>
             ))}
           </div>
 
